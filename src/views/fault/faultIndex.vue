@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div style = "background: aqua"></div>
-        <el-tabs v-model="activeName" @tab-click="handleClick">
+<!--        <div style = "background: aqua"></div>-->
+        <el-tabs v-model="activeName" @tab-click="handleClick" class = tab-control>
             <el-tab-pane label="fault" name="fault">
                 <fault></fault>
             </el-tab-pane>
@@ -40,5 +40,9 @@ export default {
 </script>
 
 <style scoped>
+    .tab-control {
+        position: sticky;
+        top: 150px;
+    }
 
 </style>

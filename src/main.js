@@ -8,8 +8,12 @@ import store from './store'
 import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import onlyNumber from '@/components/common/el-input' // 输入框只输入数字
+
 Vue.config.productionTip = false
 Vue.use(ElementUI)
+Vue.use(onlyNumber)
+
 Vue.prototype.$axios = axios
 Vue.prototype.$store = store
 /* eslint-disable no-new */

@@ -7,3 +7,7 @@ export const getStation = () => {
 export const getFault = params => {
   return request({url: '/fault/device/', params: params})
 }
+
+export const getReports = params => {
+  return request({url: '/fault/reports/', params: params})
+}

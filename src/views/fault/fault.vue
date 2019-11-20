@@ -11,13 +11,16 @@
 </template>
 
 <script>
-import {getFault} from '@/components/network/faultIndex'
 import faultTable from './table/faultTable'
+import pageTable from '@/components/content/pageTable'
+
+import {getFault} from '@/components/network/faultIndex'
 
 export default {
   name: 'fault',
   components: {
-    faultTable
+    faultTable,
+    pageTable
   },
   data () {
     return {

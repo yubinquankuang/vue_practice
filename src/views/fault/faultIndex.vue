@@ -11,6 +11,9 @@
             <el-tab-pane label="HelloWorld" name="HelloWorld">
                 <hello-world></hello-world>
             </el-tab-pane>
+            <el-tab-pane label="reports" name="reports">
+                <reports></reports>
+            </el-tab-pane>
         </el-tabs>
     </div>
 </template>
@@ -19,6 +22,8 @@
 import fault from './fault'
 import station from './station'
 import HelloWorld from './HelloWorld'
+import reports from './reports'
+
 export default {
   name: 'faultIndex',
   data () {
@@ -34,6 +39,7 @@ export default {
   components: {
     fault,
     station,
+    reports,
     HelloWorld
   }
 }

@@ -16,6 +16,24 @@
                     </el-form-item>
                 </el-col>
             </el-row>
+            <el-row>
+                <el-col :span="2" :offset="9">
+                    <el-form-item label="验证码" prop="code">
+                        <el-input
+                                v-model="code"
+                                maxlength="4"
+                        >
+                        </el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="2">
+                    <identify
+                            @changeCode="changeCode"
+                            ref="identify"
+                            :is-simple=true
+                    ></identify>
+                </el-col>
+            </el-row>
             <el-row :gutter="80">
                 <el-form-item>
                     <el-col :span="1" :offset="10">
@@ -31,9 +49,13 @@
 </template>
 
 <script>
+import identify from '@/components/common/identify/identify'
 
 export default {
   name: 'login',
+  components: {
+    identify
+  },
   data () {
     return {
       loginData: {
@@ -48,8 +70,13 @@ export default {
         pwd: [
           {required: true, message: '请输入密码', tirgger: 'blur'},
           {min: 3, max: 25, message: '长度在 3-25 个字符', trigger: 'blur'}
+        ],
+        code: [
+          { validator: this.validateCode, trigger: 'blur' }
         ]
-      }
+      },
+      checkCode: '',
+      code: ''
     }
   },
   methods: {
@@ -67,6 +94,22 @@ export default {
     toRegister () {
       console.log('register jump')
       this.$router.push({name: 'register'})
+    },
+    changeCode (newCode) {
+      this.checkCode = newCode
+    },
+    validateCode (rule, value, callback) {
+      if (this.code === this.checkCode) {
+        this.$message({
+          message: '验证成功',
+          type: 'success'
+        })
+        callback()
+      } else {
+        this.$refs.identify.handleClick()
+        console.log(this.code, this.checkCode)
+        callback(new Error('验证码不匹配请重新输入'))
+      }
     }
   }
 }

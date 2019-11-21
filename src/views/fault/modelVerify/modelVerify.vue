@@ -1,24 +1,26 @@
 <template>
-    <el-tabs type="border-card" value="modelVerify" @tab-click="tabClick">
-        <el-tab-pane label="变电站" name="TransStation">
-            <trans-station v-if="showTransStation"></trans-station>
-        </el-tab-pane>
-        <el-tab-pane label="变压器" name="Transformer">
-            <transformer v-if="showTransformer"></transformer>
-        </el-tab-pane>
-        <el-tab-pane label="录波器" name="RecordWave">
-            <record-wave v-if="showRecordWave"></record-wave>
-        </el-tab-pane>
-        <el-tab-pane label="线路" name="BaseLine">
-            <base-line v-if="showBaseLine"></base-line>
-        </el-tab-pane>
-        <el-tab-pane label="母线" name="MoLine">
-            <mo-line v-if="showMoLine"></mo-line>
-        </el-tab-pane>
-        <el-tab-pane label="保护" name="Protection">
-            <protection v-if="showProtection"></protection>
-        </el-tab-pane>
-    </el-tabs>
+    <div class="modelVerify">
+        <el-tabs type="border-card" value="modelVerify" @tab-click="tabClick">
+            <el-tab-pane label="变电站" name="TransStation">
+                <trans-station v-if="showTransStation"></trans-station>
+            </el-tab-pane>
+            <el-tab-pane label="变压器" name="Transformer">
+                <transformer v-if="showTransformer"></transformer>
+            </el-tab-pane>
+            <el-tab-pane label="录波器" name="RecordWave">
+                <record-wave v-if="showRecordWave"></record-wave>
+            </el-tab-pane>
+            <el-tab-pane label="线路" name="BaseLine">
+                <base-line v-if="showBaseLine"></base-line>
+            </el-tab-pane>
+            <el-tab-pane label="母线" name="MoLine">
+                <mo-line v-if="showMoLine"></mo-line>
+            </el-tab-pane>
+            <el-tab-pane label="保护" name="Protection">
+                <protection v-if="showProtection"></protection>
+            </el-tab-pane>
+        </el-tabs>
+    </div>
 </template>
 
 <script>

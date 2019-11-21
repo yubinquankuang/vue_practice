@@ -16,6 +16,7 @@ Vue.use(onlyNumber)
 
 Vue.prototype.$axios = axios
 Vue.prototype.$store = store
+Vue.prototype.$bus = new Vue()
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

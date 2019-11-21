@@ -2,7 +2,10 @@
     <div class="reports">
         <h3>station</h3>
         <el-button @click="getData">请求数据</el-button>
-        <scroll class="content">
+        <scroll class="content" ref="scroll" :probe-type="3"
+                @scroll="showBackTop"
+                :pull-up-load="true"
+                @pullingUp="loadMore">
             <el-table
                     :data="tableData"
                     width="100%">
@@ -15,6 +18,7 @@
                 </el-table-column>
             </el-table>
         </scroll>
+        <el-button @click="backTop" v-show="isShowBackTop">返回顶部</el-button>
     </div>
 </template>
 
@@ -23,7 +27,7 @@ import NavBar from 'components/common/navbar/NavBar'
 import pageTable from '@/components/content/pageTable'
 import Scroll from '@/components/common/scroll/scroll'
 
-import {getReports} from 'components/network/faultIndex'
+import {getReports} from '@/components/network/faultIndex'
 
 export default {
   name: 'reports',
@@ -66,17 +70,40 @@ export default {
           label: 'action_time',
           width: '100px'
         }
-      ]
+      ],
+      isShowBackTop: false,
+      currentPage: 0
     }
+  },
+  computed: {
   },
   methods: {
     getData () {
-      getReports().then(res => {
-        this.tableData = res.data
+      this.currentPage += 1
+      getReports({
+        'p': this.currentPage
+      }).then(res => {
+        this.tableData.push(...res.data.results)
       })
+    },
+    loadMore () {
+      this.getData()
+      this.$refs.scroll.finishPullUp()
+    },
+    backTop () {
+      // 返回scroll的顶部
+      this.$refs.scroll.scrollTo(0, 0, 300)
+    },
+    showBackTop (position) {
+      if (position.y < -500) {
+        this.isShowBackTop = true
+      } else {
+        this.isShowBackTop = false
+      }
     }
   },
   mounted () {
+    this.tableData = []
     this.getData()
   }
 }
@@ -84,18 +111,11 @@ export default {
 
 <style scoped>
     .reports {
-        position: relative;
-        top:180px;
-        height:800px;
+        height: 650px;
     }
     .content {
-        /*height: 600px;*/
-        height:600px;
+        /*height:600px;*/
+        height: calc(100% - 150px);
         overflow:hidden;
-        position: absolute;
-        top:150px;
-        bottom:50px;
-        left:0px;
-        rigth:0px;
     }
 </style>

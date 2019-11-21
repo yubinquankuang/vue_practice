@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="mrTable">
     <el-row>
         <el-col :span="11" :offset="1"><h3>录波分析</h3></el-col>
         <el-col :span="11" :offset="1"><h3>DMF模型</h3></el-col>
@@ -13,7 +13,7 @@
                     @row-click="handleClick"
             >
                 <el-table-column
-                        v-for="el in this.tableStyle"
+                        v-for="el in this.fTableStyle"
                         :key="el.label"
                         :prop="el.prop"
                         :label="el.label"
@@ -40,7 +40,7 @@
                     @row-click="handleClick"
             >
                 <el-table-column
-                        v-for="el in this.tableStyle"
+                        v-for="el in this.fTableStyle"
                         :key="el.label"
                         :prop="el.prop"
                         :label="el.label"
@@ -92,5 +92,7 @@ export default {
 </script>
 
 <style scoped>
-
+.mrTable {
+    height: 65vh;
+}
 </style>

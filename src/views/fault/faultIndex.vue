@@ -14,6 +14,9 @@
             <el-tab-pane label="reports" name="reports">
                 <reports></reports>
             </el-tab-pane>
+            <el-tab-pane label="modelVerify" name="modelVerify">
+                <model-verify></model-verify>
+            </el-tab-pane>
         </el-tabs>
     </div>
 </template>
@@ -23,6 +26,7 @@ import fault from './fault'
 import station from './station'
 import HelloWorld from './HelloWorld'
 import reports from './reports'
+import modelVerify from './modelVerify/modelVerify'
 
 export default {
   name: 'faultIndex',
@@ -40,7 +44,8 @@ export default {
     fault,
     station,
     reports,
-    HelloWorld
+    HelloWorld,
+    modelVerify
   }
 }
 </script>

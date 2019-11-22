@@ -3,6 +3,7 @@
         <el-table
                 :data="tableData"
                 width="100%"
+                :height="tableH"
         >
             <el-table-column
                     prop="id"

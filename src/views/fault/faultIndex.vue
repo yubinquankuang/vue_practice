@@ -17,6 +17,9 @@
             <el-tab-pane label="modelVerify" name="modelVerify">
                 <model-verify></model-verify>
             </el-tab-pane>
+            <el-tab-pane label="jszl" name="jszl">
+                <jszl></jszl>
+            </el-tab-pane>
         </el-tabs>
     </div>
 </template>
@@ -26,13 +29,14 @@ import fault from './fault'
 import station from './station'
 import HelloWorld from './HelloWorld'
 import reports from './reports'
+import jszl from './jszl/jszl'
 import modelVerify from './modelVerify/modelVerify'
 
 export default {
   name: 'faultIndex',
   data () {
     return {
-      activeName: 'station'
+      activeName: 'fault'
     }
   },
   methods: {
@@ -41,6 +45,7 @@ export default {
     }
   },
   components: {
+    jszl,
     fault,
     station,
     reports,

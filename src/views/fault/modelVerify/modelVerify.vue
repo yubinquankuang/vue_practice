@@ -1,6 +1,6 @@
 <template>
     <div class="modelVerify">
-        <el-tabs type="border-card" value="modelVerify" @tab-click="tabClick">
+        <el-tabs type="border-card" value="modelVerify" @tab-click="tabClick" v-model="activeName">
             <el-tab-pane label="变电站" name="TransStation">
                 <trans-station v-if="showTransStation"></trans-station>
             </el-tab-pane>
@@ -35,6 +35,7 @@ export default {
   name: 'modelVerify',
   data () {
     return {
+      activeName: 'TransStation',
       showTransStation: true,
       showTransformer: false,
       showRecordWave: false,
@@ -46,7 +47,7 @@ export default {
   methods: {
     // 防止一次加载多个组件
     tabClick (tab) {
-      console.log(tab.name, `show${tab.name}`)
+      // console.log(tab.name, `show${tab.name}`)
       if (!this[`show${tab.name}`]) {
         this[`show${tab.name}`] = true
       }

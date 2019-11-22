@@ -1,13 +1,14 @@
 <template>
     <div>
         <h3>fault</h3>
-        <fault-table
-        :fault-data="tableData"
-        @changeTableData="changePage"
-        >
-        </fault-table>
+        <div>
+            <fault-table
+                    :fault-data="tableData"
+                    @changeTableData="changePage"
+            >
+            </fault-table>
+        </div>
     </div>
-
 </template>
 
 <script>

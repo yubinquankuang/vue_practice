@@ -27,14 +27,6 @@ export default {
   methods: {
     transToFormat () {
       var date = new Date(this.dateTimeNum)// 时间戳为10位需*1000，时间戳为13位的话不需乘1000
-      console.log(date)
-      // var Y = date.getFullYear() + '-'
-      // var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-'
-      // var D = date.getDate() + ' '
-      // var h = date.getHours() + ':'
-      // var m = date.getMinutes() + ':'
-      // var s = date.getSeconds()
-      // this.dateTime = Y + M + D + h + m + s
       this.dateTime = date.toLocaleString()
     }
   }

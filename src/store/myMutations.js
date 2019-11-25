@@ -1,7 +1,13 @@
 import Vue from 'vue'
-import {INCREMENT} from '@/store/mutationsTypes'
+import cookie from '@/components/network/cookie'
+
+import {INCREMENT, SETUSER} from '@/store/mutationsTypes'
 
 export default {
+  [SETUSER] (state) {
+    state.user.username = cookie.getCookie('name')
+    state.user.token = cookie.getCookie('token')
+  },
   [INCREMENT] (state) {
     state.counter++
   },

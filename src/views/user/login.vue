@@ -51,6 +51,8 @@
 <script>
 import identify from '@/components/common/identify/identify'
 
+import {login} from '@/components/network/loginR'
+
 export default {
   name: 'login',
   components: {
@@ -82,6 +84,14 @@ export default {
   methods: {
     loginSubmit (formName) {
       console.log('login', formName)
+      login({
+        'username': this.loginData.name,
+        'password': this.loginData.pwd
+      }).then(res => {
+
+      }).catch(err => {
+        console.log(err)
+      })
       this.$store.commit({
         type: 'setCurrentUser',
         username: this.loginData.name,

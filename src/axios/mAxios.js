@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+import store from '@/store'
+
 // export function request (config, success, failure) {
 //   // 创建实例
 //   const instance = axios.create({
@@ -43,6 +45,9 @@ export function request (config) {
   // 拦截器
   // axios.interceptors 全局
   instance.interceptors.request.use(res => {
+    if (store.state.user.token) { // 判断是否存在token，如果存在的话，则每个http header都加上token
+      config.headers.Authorization = `JWT ${store.state.user.token}`
+    }
     return res // 必须返回
   }, error => {
     console.log(error)
@@ -53,6 +58,6 @@ export function request (config) {
   }, error => {
     console.log(error)
   })
-
+  // 返回处理后的axios实例
   return instance(config)
 }
